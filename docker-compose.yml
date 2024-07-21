@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile-mod
+    ports:
+      - 7077:7077
+      - 2345:2345
+    working_dir: /src/cmd/gateway
+    volumes:
+      - ./src:/src
+#    entrypoint:
+#      [
+#        "air",
+#        "--build.cmd",
+#        "go build -o ./tmp-app main.go",
+#        "--root",
+#        "../..",
+#        "--build.bin",
+#        "./tmp-app",
+#      ]
