@@ -6,18 +6,16 @@ services:
       context: .
       dockerfile: Dockerfile-mod
     ports:
-      - 7077:7077
+      - 8088:8088
+      - 8087:7979
       - 2345:2345
     working_dir: /src/cmd/gateway
     volumes:
       - ./src:/src
-#    entrypoint:
-#      [
-#        "air",
-#        "--build.cmd",
-#        "go build -o ./tmp-app main.go",
-#        "--root",
-#        "../..",
-#        "--build.bin",
-#        "./tmp-app",
-#      ]
+      - go-cache:/go-cache
+      - ./air-config.toml:/air-config.toml
+    environment:
+      GOCACHE: /go-cache
+    entrypoint: ["air", "-c", "/air-config.toml"]
+volumes:
+  go-cache:
