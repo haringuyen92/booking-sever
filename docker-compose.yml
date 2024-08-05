@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile-mod
     ports:
-      - 8088:8088
-      - 8087:7979
-      - 2345:2345
+      - "8088:8088"
+      - "8087:7979"
+      - "2345:2345"
     working_dir: /src/cmd/gateway
     volumes:
       - ./src:/src

@@ -50,3 +50,4 @@
 *.iws
 
 src/tmp/*
+src/*/tmp
